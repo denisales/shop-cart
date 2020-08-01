@@ -19,5 +19,9 @@ module.exports = {
       background_color: '#000000',
       orientation: 'portrait',
     },
+    workboxPluginMode: 'GenerateSW',
+    workboxOptions: {
+      exclude: [/\.map$/, /_redirects/],
+    },
   },
 };
