@@ -1,0 +1,108 @@
+@mixin custom-container($tamanho:1240px, $padding:20px){
+	max-width:$tamanho;
+	margin:0 auto;
+	width:100%;
+	padding-left:$padding;
+	padding-right:$padding;
+}
+
+@mixin flex-grid($direcao:row,$wrap:wrap){
+	display:flex;
+	flex-direction:$direcao;
+	flex-wrap:$wrap;
+}
+
+@mixin flex-align($main:flex-start, $cross:stretch){
+	justify-content:$main;
+	align-items:$cross;
+}
+
+@mixin flex-align-self($alinhamento:auto){
+	align-self:$alinhamento;
+}
+
+@mixin flex-align-content($alinhamento:stretch){
+	align-content: $alinhamento;
+}
+
+@mixin viewport($media) {
+	@if $media == xsmall {
+		@media (min-width: $xsmall) { @content; }
+	}@else if $media == $smedium {
+		@media (min-width: $smedium) { @content; }
+	}@else if $media == smedium {
+		@media (min-width: $smedium) { @content; }
+	}@else if $media == medium {
+		@media (min-width: $medium) { @content; }
+	}@else if $media == xmedium {
+		@media (min-width: $xmedium) { @content; }
+	}@else if $media == slarge {
+		@media (min-width: $slarge) { @content; }
+	}
+	@else if $media == large {
+		@media (min-width: $large) { @content; }
+	}
+	@else if $media == xlarge {
+		@media (min-width: $xlarge) { @content; }
+	}
+	@else if $media{
+		@media (min-width: $media) { @content; }
+	}
+}
+
+@mixin flex-cell($cell:null, $viewport:null, $padding:null, $qtdColuna:12){
+	@if $viewport == null {
+		@if $padding != null{
+			padding-left:$padding;
+			padding-right:$padding;
+		}
+	}
+	$coluna:(100 / $qtdColuna) * 1%;
+	@if $cell != null {
+		@if $viewport != null{
+			@include viewport($viewport){
+				@content;
+
+				@if $cell != auto{
+					width:$coluna * $cell;
+					flex-grow: initial;
+					flex-basis: initial;
+				}
+				@else if $cell == auto {
+					flex-grow: 1;
+					flex-basis: 0;
+				}
+				@if $padding != null{
+					padding-left:$padding;
+					padding-right:$padding;
+				}
+			}
+		}
+		@else if $cell != auto{
+			width:$coluna * $cell;
+			flex-grow: initial;
+			flex-basis: initial;
+		}
+		@else if $cell == auto {
+			flex-grow: 1;
+			flex-basis: 0;
+		}
+	}
+}
+
+
+@mixin box($largura, $altura:null, $background:null){
+    background:$background;
+	width:$largura;
+	@if $altura == null{
+		height:$largura;
+	}
+	@else{
+		height:$altura;
+	}
+}
+
+@mixin margin-center(){
+	margin-left:auto;
+	margin-right:auto;
+}
