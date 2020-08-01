@@ -148,6 +148,9 @@ export default {
     }
 
     &__close {
+      position: absolute;
+      top: 20px;
+      left: 20px;
       background: none;
       border: 0;
       outline: none;
@@ -163,7 +166,7 @@ export default {
     &__header {
       @include flex-grid();
       @include flex-align(center, center);
-      padding: 20px 0 30px;
+      padding: 10px 0 30px;
 
       &__title {
         margin: 0;

@@ -72,6 +72,7 @@ export default {
     @include box(20px);
     @include flex-grid();
     @include flex-align(center, center);
+    font-weight: 800;
   }
 }
 </style>
