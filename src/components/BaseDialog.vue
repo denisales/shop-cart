@@ -19,16 +19,18 @@ export default {
 </script>
 
 <template>
-  <transition name="fade">
-    <div class="Dialog" v-show="value" :aria-hidden="!value">
-      <div class="Overlay" @click="$emit('close')"></div>
-      <transition name="slide-up">
-        <div v-if="value" class="Content">
-          <slot></slot>
-        </div>
-      </transition>
-    </div>
-  </transition>
+  <portal to="dialog">
+    <transition name="fade">
+      <div class="Dialog" v-show="value" :aria-hidden="!value">
+        <div class="Overlay" @click="$emit('close')"></div>
+        <transition name="slide-up">
+          <div v-if="value" class="Content">
+            <slot></slot>
+          </div>
+        </transition>
+      </div>
+    </transition>
+  </portal>
 </template>
 
 <style lang="scss" scoped>

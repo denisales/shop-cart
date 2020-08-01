@@ -19,8 +19,9 @@ export default {
 <template>
   <div>
     <the-header/>
-    <the-cart-drawer/>
-    <the-notification ref="notification"/>
     <router-view />
+     <the-cart-drawer/>
+    <the-notification ref="notification"/>
+    <portal-target name="dialog"></portal-target>
   </div>
 </template>
