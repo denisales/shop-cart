@@ -13,6 +13,7 @@ Vue.use(PortalVue);
 
 Vue.config.productionTip = false;
 
+/** Descomentar .NODE_ENV quando implementar a API real */
 // if (process.env.NODE_ENV === 'development') {
 makeServer();
 // }
