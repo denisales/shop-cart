@@ -31,7 +31,7 @@ export default {
         const { data } = await productsServices.list();
         this.products = data.products;
       } catch (error) {
-        console.log(error);
+        this.$root.$notification.open({ message: 'Erro ao carregar os produtos', color: 'error' });
       } finally {
         this.loading = false;
       }
