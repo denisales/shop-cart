@@ -1,5 +1,6 @@
 <script>
 import BaseDialog from '@/components/BaseDialog.vue';
+import BaseSkeletonLoader from '@/components/BaseSkeletonLoader.vue';
 import Product from '@/views/Product';
 import productsServices from '@/services/productsServices';
 
@@ -8,6 +9,7 @@ export default {
   components: {
     BaseDialog,
     Product,
+    BaseSkeletonLoader,
   },
   data() {
     return {
@@ -23,17 +25,20 @@ export default {
       this.product = product;
       this.dialog = true;
     },
+    async handleProducts() {
+      try {
+        this.loading = true;
+        const { data } = await productsServices.list();
+        this.products = data.products;
+      } catch (error) {
+        console.log(error);
+      } finally {
+        this.loading = false;
+      }
+    },
   },
-  async created() {
-    try {
-      this.loading = true;
-      const { data } = await productsServices.list();
-      this.products = data.products;
-    } catch (error) {
-      console.log(error);
-    } finally {
-      this.loading = false;
-    }
+  created() {
+    this.handleProducts();
   },
 };
 </script>
@@ -42,17 +47,29 @@ export default {
   <div>
     <section class="Container">
       <div class="Content">
-        <div class="Column" v-for="product in products" :key="product.id">
-          <div class="CardProduct">
-            <div class="CardProduct__thumb" @click="handleProduct(product)">
-              <img src="@/assets/img/thumb.jpg" alt />
-            </div>
-            <span class="CardProduct__title" @click="dialog = true">{{product.title}}</span>
-            <span class="CardProduct__price">{{product.price | currency}}</span>
-            <span class="CardProduct__caption" v-if="product.installments">ou {{product.installments}} x {{product.currencyFormat}} {{ (product.price / product.installments)| currency }}</span>
-            <span class="CardProduct__caption" v-else>á vista</span>
+        <template v-if="loading">
+          <div class="Column" v-for="i in Array(8)" :key="i">
+            <base-skeleton-loader width="180" height="230" />
+            <base-skeleton-loader width="120" height="40" />
+            <base-skeleton-loader width="100" height="20" />
           </div>
-        </div>
+        </template>
+        <template v-else>
+          <div class="Column" v-for="product in products" :key="product.id">
+            <div class="CardProduct">
+              <div class="CardProduct__thumb" @click="handleProduct(product)">
+                <img src="@/assets/img/thumb.jpg" :alt="product.title" />
+              </div>
+              <span class="CardProduct__title" @click="dialog = true">{{product.title}}</span>
+              <span class="CardProduct__price">{{product.price | currency}}</span>
+              <span
+                class="CardProduct__caption"
+                v-if="product.installments"
+              >ou {{product.installments}} x {{ (product.price / product.installments)| currency }}</span>
+              <span class="CardProduct__caption" v-else>á vista</span>
+            </div>
+          </div>
+        </template>
       </div>
     </section>
 
@@ -103,6 +120,7 @@ export default {
     overflow: hidden;
     margin-bottom: 10px;
     border-radius: 2px;
+    background: var(--color6);
     img {
       width: 100%;
       transition: all 0.3s ease;
@@ -140,7 +158,7 @@ export default {
     }
   }
   &__caption {
-    color: var(--color6);;
+    color: var(--color6);
   }
 }
 </style>
