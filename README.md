@@ -17,7 +17,7 @@ Quando o usuário seleciona um produto para colocá-lo no carrinho, uma requisi�
 
  - Algumas das boas práticas que utilizei no Vue para criar o projeto
 
-    - [Style guide](https://vuejs.org/v2/style-guide/) - Style guide Vue - essencial.
+    - [Style guide](https://vuejs.org/v2/style-guide/) - Style guide Vue.
 
     - [Patterns](https://learn-vuejs.github.io/vue-patterns/patterns/#component-communication) - Alguns patterns do vue
 
