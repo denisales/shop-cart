@@ -43,7 +43,7 @@ export default {
 </script>
 
 <template>
-  <div class="ProductView">
+  <div class="ProductView" data-testid="ProductView">
     <div class="ProductView__image">
       <img src="@/assets/img/thumb.jpg" :alt="product.title" />
     </div>

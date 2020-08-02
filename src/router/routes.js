@@ -7,14 +7,6 @@ const routes = [
     name: 'Home',
     component: Home,
   },
-  // {
-  //   path: '/product/:sku',
-  //   name: 'Product',
-  //   components: {
-  //     default: Home,
-  //     product: Product,
-  //   },
-  // },
 ];
 
 export default routes;

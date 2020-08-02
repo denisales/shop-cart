@@ -15,7 +15,7 @@ export default {
     return {
       loading: false,
       products: [],
-      product: null,
+      product: {},
       dialog: false,
       menu: false,
     };
@@ -56,8 +56,8 @@ export default {
         </template>
         <template v-else>
           <div class="Column" v-for="product in products" :key="product.id">
-            <div class="CardProduct">
-              <div class="CardProduct__thumb" @click="handleProduct(product)">
+            <div class="CardProduct" data-testid="CardProduct">
+              <div class="CardProduct__thumb" @click="handleProduct(product)" data-testid="CardProductThumb">
                 <img src="@/assets/img/thumb.jpg" :alt="product.title" />
               </div>
               <span class="CardProduct__title" @click="dialog = true">{{product.title}}</span>
