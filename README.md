@@ -9,7 +9,6 @@ Toda a API estática foi feita utilizando o MirageJS, nele fiz toda a configura�
 
 A aplicação foi pensada para ser um PWA e TWA, onde o APK pode ser gerado facilmente utilizando o [Bubblewrap CLI](https://github.com/GoogleChromeLabs/bubblewrap), e ter uma grande vantagem de ter um APK do Ecommerce.
 
-
 ## Fluxo do carrinho
 
 Quando o usuário seleciona um produto para colocá-lo no carrinho, uma requisição que valida se o mesmo existe em estoque é disparada. Caso este esteja disponível, outra requisição é disparada, buscando o item selecionado e por fim adicionando-o ao carrinho.
@@ -26,6 +25,10 @@ Quando o usuário seleciona um produto para colocá-lo no carrinho, uma requisi�
 
  - Html semântico - utilizando mixins SASS e BEM css
 
+
+ ## Testes unitários
+
+Realizei somente alguns por ainda não ter tanta prática.
 
 ## Dependências do projeto
 
