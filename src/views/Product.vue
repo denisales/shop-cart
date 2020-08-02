@@ -59,7 +59,7 @@ export default {
       >até {{product.installments}}x de {{ (product.price / product.installments)| currency }}</div>
       <span class="installments" v-else>á vista</span>
       <div class="shipping" v-if="product.isFreeShipping">Frete Gratis</div>
-      <base-button :loading="loading" @click="handleAddToCart">Adicionar ao carrinho</base-button>
+      <base-button :loading="loading" @click="handleAddToCart">Adicionar à sacola</base-button>
       <button class="close" @click="$emit('close')">FECHAR</button>
     </div>
   </div>
