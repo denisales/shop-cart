@@ -116,7 +116,7 @@ export default {
       font-weight: bold;
       text-align: center;
       @include viewport($xsmall) {
-        font-size: 20px;
+        font-size: 18px;
       }
     }
     .desc {
@@ -136,7 +136,7 @@ export default {
       font-weight: bold;
       margin: 0 0 2px;
       @include viewport($xsmall) {
-        font-size: 28px;
+        font-size: 26px;
       }
     }
     .installments {
