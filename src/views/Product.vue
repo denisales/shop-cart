@@ -45,7 +45,7 @@ export default {
 <template>
   <div class="ProductView">
     <div class="ProductView__image">
-      <img src="@/assets/img/thumb.jpg" alt />
+      <img src="@/assets/img/thumb.jpg" :alt="product.title" />
     </div>
     <div class="ProductView__info">
       <h2 class="title">{{product.title}}</h2>
@@ -84,6 +84,7 @@ export default {
     overflow: hidden;
     border-radius: 2px;
     margin: 0 0 10px;
+    background: var(--color6);
     @include viewport($medium) {
       margin-right: 20px;
     }
