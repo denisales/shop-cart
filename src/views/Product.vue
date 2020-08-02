@@ -179,6 +179,7 @@ export default {
     width: 0;
   }
   label {
+    cursor: pointer;
     margin: 0 2px;
     border: 1px solid var(--color1);
     display: block;
