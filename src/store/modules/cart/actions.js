@@ -15,7 +15,7 @@ export default {
 
     const amount = currentAmount + 1;
 
-    if (amount > stockAmount) throw new Error('Produto fora de estoque');
+    if (amount > stockAmount) throw new Error('Quantidade fora de estoque');
 
     if (productExists) return commit('UPDATE_ITEM_AMOUNT', { productId: product.id, size: product.size, amount });
 
