@@ -1,5 +1,6 @@
 <script>
 import BaseDialog from '@/components/BaseDialog.vue';
+import BaseButton from '@/components/BaseButton.vue';
 import BaseSkeletonLoader from '@/components/BaseSkeletonLoader.vue';
 import Product from '@/views/Product';
 import productsServices from '@/services/productsServices';
@@ -8,11 +9,13 @@ export default {
   name: 'Home',
   components: {
     BaseDialog,
+    BaseButton,
     Product,
     BaseSkeletonLoader,
   },
   data() {
     return {
+      error: false,
       loading: false,
       products: [],
       product: {},
@@ -30,7 +33,9 @@ export default {
         this.loading = true;
         const { data } = await productsServices.list();
         this.products = data.products;
+        this.error = false;
       } catch (error) {
+        this.error = true;
         this.$root.$notification.open({ message: 'Erro ao carregar os produtos', color: 'error' });
       } finally {
         this.loading = false;
@@ -47,6 +52,13 @@ export default {
   <div>
     <section class="Container">
       <div class="Content">
+         <template v-if="error">
+          <div class="Error">
+            <p>Falha ao carregar os produtos</p>
+            <base-button @click="handleProducts">Tentar novamente</base-button>
+          </div>
+
+        </template>
         <template v-if="loading">
           <div class="Column" v-for="i in Array(8)" :key="i">
             <base-skeleton-loader width="180" height="230" />
@@ -97,6 +109,19 @@ export default {
   @include flex-cell(6, smedium);
   @include flex-cell(4, medium);
   @include flex-cell(3, slarge);
+}
+
+.Error {
+  max-width: 400px;
+  width: 100%;
+  margin: 40px auto 20px;
+  font-weight: bold;
+  font-size: 28px;
+  text-align: center;
+  display: block;
+  p {
+   margin-bottom: 40px;
+  }
 }
 
 .CardProduct {
