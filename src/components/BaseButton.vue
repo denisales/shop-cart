@@ -29,7 +29,7 @@ export default {
 .Button {
   width: 100%;
   border: 0;
-  background: #000;
+  background: var(--color3);
   color: #fff;
   min-height: 50px;
   border-radius: 4px;
@@ -49,7 +49,7 @@ export default {
   &.loading {
     &:hover,
     &:focus {
-       background: #000;
+       background: var(--color3);
     }
   }
 

@@ -67,7 +67,7 @@ export default {
     padding: 0 20px;
 
     .content {
-      border-top: 1px solid #000;
+      border-top: 1px solid var(--color3);
       position: relative;
       padding: 20px 0;
       @include flex-grid();
@@ -98,11 +98,11 @@ export default {
       }
       .ListItemProduct__desc__info {
         text-decoration: line-through;
-        text-decoration-color: #999999;
+        text-decoration-color: var(--color6);
       }
       .ListItemProduct__price {
         text-decoration: line-through;
-        text-decoration-color: #dfbd00;
+        text-decoration-color: var(--color4);
       }
     }
 
@@ -125,7 +125,7 @@ export default {
 
     &:last-of-type {
       .content {
-        border-bottom: 1px solid #000;
+        border-bottom: 1px solid var(--color3);
       }
     }
     &__thumb {
@@ -145,12 +145,12 @@ export default {
       &__info {
         display: block;
         font-size: 12px;
-        color: #999999;
+        color: var(--color6);;
       }
     }
     &__price {
       align-self: flex-end;
-      color: #dfbd00;
+      color: var(--color4);
       font-size: 14px;
       font-weight: bold;
     }

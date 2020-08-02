@@ -1,3 +1,17 @@
+// Quantidades de colunas da Grid
+$qtdColunas: 12;
+$coluna:(100 / $qtdColunas) * 1%;
+
+// Valores media queries
+$xsmall:360px; // iphone 6,7
+$smedium: 568px; // iphone 5 landscape
+$medium: 640px; // celular landscape
+$xmedium: 768px; // tablet / ipad
+$slarge: 992px; //desktop menor
+$large: 1024px; // desktop
+$xlarge: 1200px;
+$xxlarge: 1400px;
+
 @mixin custom-container($tamanho:1240px, $padding:20px){
 	max-width:$tamanho;
 	margin:0 auto;

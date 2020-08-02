@@ -113,7 +113,7 @@ export default {
   &__title {
     cursor: pointer;
     font-size: 14px;
-    color: #313135;
+    color: var(--color1);
     text-align: center;
     margin: 0 0 4px;
     position: relative;
@@ -125,7 +125,7 @@ export default {
       height: 2px;
       width: 20px;
       display: block;
-      background: #dfbd00;
+      background: var(--color4);
       left: 50%;
       bottom: 0;
       transform: translateX(-50%);
@@ -134,13 +134,13 @@ export default {
   &__price {
     font-size: 24px;
     font-weight: 800;
-    color: #313135;
+    color: var(--color1);
     .symbol {
       font-size: 12px;
     }
   }
   &__caption {
-    color: #999999;
+    color: var(--color6);;
   }
 }
 </style>

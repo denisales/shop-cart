@@ -63,7 +63,7 @@ export default {
 
   .Badge {
     font-size: 12px;
-    background: #dfbd00;
+    background: var(--color4);
     border-radius: 50%;
     display: block;
     position: absolute;

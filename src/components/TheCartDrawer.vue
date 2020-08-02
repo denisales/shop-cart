@@ -133,7 +133,7 @@ export default {
     top: 0;
     bottom: 0;
     width: 100%;
-    background: #3e3e3e;
+    background: var(--color2);
     padding: 20px;
     box-shadow: -3px 0px 16px rgba(0, 0, 0, 0.5);
     transform: translateX(110%);
@@ -193,7 +193,7 @@ export default {
           opacity: 0.6;
         }
         .price {
-          color: #dfbd00;
+          color: var(--color4);
           font-weight: bold;
           font-size: 24px;
           @include flex-align(flex-start, flex-end);

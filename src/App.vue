@@ -17,7 +17,7 @@ export default {
 </script>
 
 <template>
-  <div>
+  <div class="App">
     <the-header/>
     <router-view />
      <the-cart-drawer/>
