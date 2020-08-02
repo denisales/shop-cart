@@ -72,14 +72,14 @@ export default {
         <div class="ListProduct">
           <base-list-item-product
             v-for="product in products"
-            :key="product.id"
+            :key="`${product.id}-${product.size}`"
             :title="product.title"
-            size="G"
+            :size="product.size"
             :styled="product.style"
             :amount="product.amount"
             :price="product.price"
             :currencyFormat="product.currencyFormat"
-            @remove="removeItemCart(product.id)"
+            @remove="removeItemCart({productId: product.id, size: product.size})"
           />
         </div>
         <div class="CartDrawer__aside__checkout">

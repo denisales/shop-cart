@@ -14,6 +14,7 @@ export default {
   },
   data() {
     return {
+      sizeSelected: null,
       loading: false,
     };
   },
@@ -25,7 +26,9 @@ export default {
     async handleAddToCart() {
       try {
         this.loading = true;
-        await this.addToCart(this.product);
+        const product = { ...this.product };
+        product.size = this.sizeSelected;
+        await this.addToCart(product);
         this.$root.$notification.open({
           message: 'Produto adicionado a sua sacola',
           color: 'success',
@@ -51,6 +54,13 @@ export default {
       <h2 class="title">{{product.title}}</h2>
       <h3 class="desc">{{product.description}}</h3>
       <p class="style">{{product.style}}</p>
+
+      <div class="SelectSize">
+        <div v-for="(size, index) in product.availableSizes" :key="index">
+          <input v-model="sizeSelected" type="radio" :value="size" :id="size" name="size" />
+          <label :for="size">{{size}}</label>
+        </div>
+      </div>
 
       <span class="price">{{product.price | currency}}</span>
       <div
@@ -102,9 +112,12 @@ export default {
     width: 100%;
     .title {
       margin: 0 0 4px;
-      font-size: 20px;
+      font-size: 16px;
       font-weight: bold;
       text-align: center;
+      @include viewport($xsmall) {
+        font-size: 20px;
+      }
     }
     .desc {
       font-weight: 400;
@@ -119,13 +132,20 @@ export default {
       text-align: center;
     }
     .price {
-      font-size: 28px;
+      font-size: 20px;
       font-weight: bold;
       margin: 0 0 2px;
+      @include viewport($xsmall) {
+        font-size: 28px;
+      }
     }
     .installments {
       font-weight: 300;
       margin: 0 0 10px;
+      font-size: 12px;
+      @include viewport($xsmall) {
+        font-size: 14px;
+      }
     }
     .shipping {
       font-weight: 400;
@@ -137,11 +157,41 @@ export default {
       border: 0;
       outline: none;
       background: none;
-      transition: opacity .3s ease;
-      &:hover,&:focus {
-        opacity: .6;
+      transition: opacity 0.3s ease;
+      &:hover,
+      &:focus {
+        opacity: 0.6;
       }
     }
+  }
+}
+
+.SelectSize {
+  @include flex-grid();
+  margin: 5px 0;
+  position: relative;
+  user-select: none;
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  label {
+    margin: 0 2px;
+    border: 1px solid var(--color1);
+    display: block;
+    @include box(30px);
+    background-color: transparent;
+    font-size: 11px;
+    @include flex-grid();
+    @include flex-align(center, center);
+    transition: all 0.2s ease;
+  }
+  input:checked ~ label {
+    background-color: var(--color1) !important;
+    color: #fff;
   }
 }
 </style>
