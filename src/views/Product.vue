@@ -189,6 +189,9 @@ export default {
     @include flex-grid();
     @include flex-align(center, center);
     transition: all 0.2s ease;
+    &:hover {
+       background-color: rgba($color: #000000, $alpha: 0.2);
+    }
   }
   input:checked ~ label {
     background-color: var(--color1) !important;
