@@ -50,7 +50,7 @@ export default {
 </script>
 
 <template>
-  <div class="CartDrawer" :aria-hidden="!show">
+  <div class="CartDrawer">
     <transition name="fade">
       <div class="overlay" v-show="show" @click="show = !show"></div>
     </transition>
