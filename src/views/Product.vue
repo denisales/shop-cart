@@ -27,7 +27,7 @@ export default {
         this.loading = true;
         await this.addToCart(this.product);
         this.$root.$notification.open({
-          message: 'Produto adicionado ao carrinho',
+          message: 'Produto adicionado a sua sacola',
           color: 'success',
         });
         this.$emit('addCartSuccess');
